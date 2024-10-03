@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Personal Information</title>
+    <style>
+        body {
+            margin: 0;
+            padding-top: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .Personal-Information-Form {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            font-family: Arial;
+            font-weight: bold;
+            font-size: 40px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            border-bottom-color: rgb(141, 139, 139);
+            z-index: 1000;
+        }
+        .upload-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 20px;
+            width: 400px;
+            height: 150px;
+            background-color: rgb(246, 216, 230);
+            border: 2px dashed rgb(244, 105, 228);
+            border-radius: 10px;
+            text-align: center;
+        }
+        .upload-section p {
+            font-size: 20px;
+            color: grey;
+        }
+        .upload-button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: rgb(244, 105, 228);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+            flex-direction: column;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        .name, .date-of-birth, .address, .email, .phone, .preferred-contact {
+            color: grey;
+            font-family: Arial;
+            font-weight: bold;
+            font-size: 37px;
+        }
+        .input-field {
+            height: 40px;
+            width: 400px;
+            background-color: rgb(246, 216, 230);
+            font-family: Arial;
+            font-weight: bold;
+            font-size: 15px;
+            border-radius: 3px;
+            border: 1px solid rgb(244, 105, 228);
+            margin-top: 10px;
+        }
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+            align-items: flex-start;
+            font-size: 20px;
+        }
+        .checkbox-group div {
+            background-color: rgb(246, 216, 230);
+            padding: 5px;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+        .checkbox-group input {
+            transform: scale(1.5);
+            margin-right: 10px;
+        }
+        .dob-container {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .dob-container img {
+            height: 35px;
+            margin-top: 9px;
+            margin-left: 10px;
+        }
+        .inline-inputs {
+            display: flex;
+            justify-content: space-between;
+            width: 400px;
+            margin-top: 10px;
+        }
+        .hidden-input {
+            display: none;
+        }
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal video {
+            width: 400px;
+            height: 300px;
+            border: 1px solid black;
+        }
+        .modal button {
+            padding: 15px 30px;
+            font-size: 20px;
+            background-color: rgb(244, 105, 228);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="Personal-Information-Form">
+        Personal Information Form
+    </div>
+    <div class="upload-section">
+        <p>Upload Your Profile Photo Here</p>
+        <button class="upload-button" onclick="chooseUpload()">Upload Photo</button>
+        <input type="file" id="fileInput" class="hidden-input" accept="image/*">
+    </div>
+    <div class="section">
+        <div class="name">Name</div>
+        <div>
+            <input style="margin-right: 20px" class="input-field" type="text" id="firstName" placeholder="First" onblur="validateName(this)">
+            <input class="input-field" type="text" id="initials" placeholder="Initials" onblur="validateName(this)">
+        </div>
+        <div style="margin-top: 20px;">
+            <input style="margin-right: 20px" class="input-field" type="text" id="middleName" placeholder="Middle" onblur="validateName(this)">
+            <input class="input-field" type="text" id="lastName" placeholder="Last" onblur="validateName(this)">
+        </div>
+    </div>
+    <div class="section">
+        <div class="date-of-birth">Date of Birth</div>
+        <div class="dob-container">
+            <input class="input-field" type="text" id="dateOfBirth" placeholder="DD/MM/YYYY" onblur="validateDate(this)">
+            <img src="https://www.clipartmax.com/png/middle/139-1399436_calendar-icons-facebook-date-of-birth-icon.png" alt="Calendar Icon">
+        </div>
+    </div>
+    <div class="section">
+        <div class="address">Address</div>
+        <input style="width:700px" class="input-field" type="text" id="streetAddress1" placeholder="Street Address 1" oninput="validateAddress(this)">
+        <input style="width:700px" class="input-field" type="text" id="streetAddress2" placeholder="Street Address 2" oninput="validateAddress(this)">
+        <div class="inline-inputs" style="margin-top: 10px;">
+            <input style="margin-left: 0" class="input-field" type="text" id="city" placeholder="City" oninput="validateAddress(this)">
+            <input style="margin-left: 10px" class="input-field" type="text" id="region" placeholder="Region" oninput="validateAddress(this)">
+        </div>
+    </div>
+    <div class="section">
+        <div class="email">Email Address</div>
+        <input class="input-field" type="email" id="email" placeholder="Email" onblur="validateEmail(this)">
+    </div>
+    <div class="section">
+        <div class="phone">Phone Number</div>
+        <input class="input-field" type="tel" id="phoneNumber" placeholder="Phone Number" onblur="validatePhone(this)">
+    </div>
+    <div class="section">
+        <div class="preferred-contact">Preferred Contact Address</div>
+        <div class="checkbox-group">
+            <div><input type="checkbox" name="preferred-contact" value="Home"> Home</div>
+            <div><input type="checkbox" name="preferred-contact" value="Work"> Work</div>
+            <div><input type="checkbox" name="preferred-contact" value="Other"> Other</div>
+        </div>
+    </div>
+
+    <script>
+        function chooseUpload() {
+            const choice = confirm("Choose an option: \n\nPress OK to upload a file.\nPress Cancel to take a photo.");
+            if (choice) {
+                document.getElementById('fileInput').click(); 
+            } else {
+                // Create a modal window
+                const modal = document.createElement('div');
+                modal.className = 'modal';
+                modal.style.position = 'fixed';
+                modal.style.top = '0';
+                modal.style.left = '0';
+                modal.style.width = '100%';
+                modal.style.height = '100%';
+                modal.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+                modal.style.display = 'flex';
+                modal.style.justifyContent = 'center';
+                modal.style.alignItems = 'center';
+
+                // Create a video element to display the camera feed
+                const video = document.createElement('video');
+                video.style.width = '400px';
+                video.style.height = '300px';
+                video.style.border = '1px solid black';
+
+                // Create a capture button
+                const captureButton = document.createElement('button');
+                captureButton.textContent = 'Capture';
+                captureButton.style.padding = '15px 30px';
+                captureButton.style.fontSize = '20px';
+                captureButton.style.backgroundColor = 'rgb(244, 105, 228)';
+                captureButton.style.color = 'white';
+                captureButton.style.border = 'none';
+                captureButton.style.borderRadius = '5px';
+                captureButton.style.cursor = ' pointer';
+
+                // Add the video and capture button to the modal window
+                modal.appendChild(video);
+                modal.appendChild(captureButton);
+
+                // Add the modal window to the page
+                document.body.appendChild(modal);
+
+                // Get access to the camera
+                navigator.mediaDevices.getUserMedia({ video: true })
+                    .then(stream => {
+                        video.srcObject = stream;
+                        video.play();
+                        captureButton.onclick = () => {
+                            const canvas = document.createElement('canvas');
+                            canvas.width = video.videoWidth;
+                            canvas.height = video.videoHeight;
+                            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+                            const photo = canvas.toDataURL();
+                            document.body.appendChild(canvas);
+                            stream.getTracks().forEach(track => track.stop());
+                            modal.remove();
+                        };
+                    })
+                    .catch(error => {
+                        console.error('Error accessing camera:', error);
+                        modal.remove();
+                    });
+            }
+        }
+
+        function validateName(inputField) {
+            const value = inputField.value;
+            const alphabetRegex = /^[A-Za-z\s]*$/;
+            if (!alphabetRegex.test(value) && value !== '') {
+                alert("Error: Only alphabets are allowed in the name field.");
+            }
+        }
+
+        function validateDate(inputField) {
+            const value = inputField.value;
+            const dateRegex = /^\d{2}\/\d{2}\/\d{4}$/;
+            if (!dateRegex.test(value) && value !== '') {
+                alert("Error: Date must be in the format DD/MM/YYYY.");
+            }
+        }
+
+        function validateAddress(inputField) {
+            const value = inputField.value;
+            if (value.length > 100) {
+                alert("Error: Address is too long (maximum 100 characters).");
+            }
+        }
+
+        function validateEmail(inputField) {
+            const value = inputField.value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(value) && value !== '') {
+                alert("Error: Please enter a valid email address.");
+            }
+        }
+
+        function validatePhone(inputField) {
+            const value = inputField.value;
+            const phoneRegex = /^\d{10}$/; // Adjust based on your phone number format
+            if (!phoneRegex.test(value) && value !== '') {
+                alert("Error: Phone number must be 10 digits long.");
+            }
+        }
+    </script>
+</body>
+</html>
