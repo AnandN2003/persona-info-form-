@@ -1,0 +1,140 @@
+body {
+    margin: 0;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Personal-Information-Form {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(141, 139, 139);
+    z-index: 1000;
+}
+.upload-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    width: 400px;
+    height: 150px;
+    background-color: rgb(246, 216, 230);
+    border: 2px dashed rgb(244, 105, 228);
+    border-radius: 10px;
+    text-align: center;
+}
+.upload-section p {
+    font-size: 20px;
+    color: grey;
+}
+.upload-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: rgb(244, 105, 228);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.name, .date-of-birth, .address, .email, .phone, .preferred-contact {
+    color: grey;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 37px;
+}
+.input-field {
+    height: 40px;
+    width: 400px;
+    background-color: rgb(246, 216, 230);
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 3px;
+    border: 1px solid rgb(244, 105, 228);
+    margin-top: 10px;
+}
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    align-items: flex-start;
+    font-size: 20px;
+}
+.checkbox-group div {
+    background-color: rgb(246, 216, 230);
+    padding: 5px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+.checkbox-group input {
+    transform: scale(1.5);
+    margin-right: 10px;
+}
+.dob-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+.dob-container img {
+    height: 35px;
+    margin-top: 9px;
+    margin-left: 10px;
+}
+.inline-inputs {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+    margin-top: 10px;
+}
+.hidden-input {
+    display: none;
+}
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal video {
+    width: 400px;
+    height: 300px;
+    border: 1px solid black;
+}
+.modal button {
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: rgb(244, 105, 228);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
